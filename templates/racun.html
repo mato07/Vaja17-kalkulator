@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>SmartNinja basic Jinja template</title>
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <h1>Hello, SmartNinja!</h1>
+    <form method="POST" action="/prikaz">
+        <label for="input-st1">Število 1: </label>
+        <input type="number" id="input-st1" name="st1">
+        <br>
+        <label for="input-st2">Število 2: </label>
+        <input type="number" id="input-st2" name="st2">
+        <br>
+        <label for="operacija">Operacija (+,-,*,/): </label>
+        <input type="text" id="operacija" name="op">
+        <br>
+        <button type="submit">Izračunaj</button>
+    </form>
+
+</body>
+</html>

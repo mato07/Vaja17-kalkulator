@@ -29,8 +29,30 @@ class BaseHandler(webapp2.RequestHandler):
 
 class MainHandler(BaseHandler):
     def get(self):
-        return self.render_template("hello.html")
+        return self.render_template("racun.html")
+
+class LoginHandler(BaseHandler):
+    def post(self):
+
+        if self.request.get("op")=="+":
+            rezultat = int(self.request.get("st1")) + int(self.request.get("st2"))
+        elif self.request.get("op")=="-":
+            rezultat = int(self.request.get("st1")) - int(self.request.get("st2"))
+        elif self.request.get("op") == "/":
+            rezultat = float(self.request.get("st1")) / float(self.request.get("st2"))
+        elif self.request.get("op") == "*":
+            rezultat = float(self.request.get("st1")) * float(self.request.get("st2"))
+        else:
+            rezultat = "Neznan operater"
+
+        podatki = {"rezultat": rezultat}
+        return self.render_template("prikaz_rezultata.html", podatki)
+
+        #return self.write("Uspesen post request " + self.request.get("ime") +
+         #                 "Tvoj priimek je: " + self.request.get("priimek"))
 
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
+    webapp2.Route('/prikaz', LoginHandler)
+
 ], debug=True)
